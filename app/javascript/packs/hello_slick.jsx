@@ -20,16 +20,40 @@ class SimpleSlider extends React.Component {
       slidesToScroll: 1
     }
 
-    const pictures = []
+    const picture_names = [
+      "HU001_72A.jpg",
+      "HU002_72A.jpg",
+      "HU003_72A.jpg",
+      "HU004_72A.jpg",
+      "HU005_72A.jpg",
+      "HU006_72A.jpg",
+      "HU007_72A.jpg",
+      "HU008_72A.jpg",
+      "HU009_72A.jpg",
+      "HU010_72A.jpg",
+      "HU011_72A.jpg",
+      "HU012_72A.jpg",
+      "HU013_72A.jpg",
+      "HU014_72A.jpg",
+      "HU015_72A.jpg",
+      "HU016_72A.jpg",
+      "HU017_72A.jpg",
+      "HU018_72A.jpg",
+      "HU019_72A.jpg",
+      "HU020_72A.jpg",
+    ]
+
+    const pictures = picture_names.map((p) => {
+      return `/images/slick/${p}`
+    })
 
     return (
       <Slider {...settings}>
-        <div><h3>1</h3></div>
-        <div><h3>2</h3></div>
-        <div><h3>3</h3></div>
-        <div><h3>4</h3></div>
-        <div><h3>5</h3></div>
-        <div><h3>6</h3></div>
+        {
+          pictures.map((p) => 
+                       <div key={p}><SlideImage url={p} /></div>
+                      )
+        }
       </Slider>
     )
   }

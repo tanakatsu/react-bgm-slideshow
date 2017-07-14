@@ -14,9 +14,6 @@ class SimpleSliderContainer extends React.Component {
   }
 
   componentWillMount() {
-  }
-
-  render() {
     const picture_names = [
       "HU001_72A.jpg",
       "HU002_72A.jpg",
@@ -44,10 +41,22 @@ class SimpleSliderContainer extends React.Component {
       return `/images/slick/${p}`
     })
 
+    //this.props.actions.showLoading()
+    this.props.actions.setPictures(pictures)
+  }
+
+  render() {
+    let slider = null
+    if (this.props.pictures.length > 0) {
+      slider = <SimpleSlider pictures={this.props.pictures} />
+    }
+
     return (
       <div>
-        <div>{this.props.loading ? <span>Loading...</span> : null}</div>
-        <SimpleSlider pictures={pictures} />
+        <div>
+          {this.props.loading ? <span>Loading...</span> : null}
+        </div>
+        {slider}
       </div>
     )
   }

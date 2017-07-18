@@ -7,11 +7,12 @@ import ReactDOM from 'react-dom'
 import PropTypes from 'prop-types'
 
 import { Provider } from 'react-redux'
-import { createStore } from 'redux'
+import { createStore, applyMiddleware } from 'redux'
+import thunk from 'redux-thunk'
 import rootReducers from './reducers'
 import SimpleSliderContainer from './containers/SimpleSliderContainer'
 
-let store = createStore(rootReducers)
+let store = createStore(rootReducers, applyMiddleware(thunk))
 
 document.addEventListener('DOMContentLoaded', () => {
   ReactDOM.render(

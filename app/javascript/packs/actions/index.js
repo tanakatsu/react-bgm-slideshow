@@ -16,3 +16,13 @@ export const setPictures = (pictures) => {
     pictures
   }
 }
+
+export const loadPictures = (pictures) => {
+  return (dispatch, getState) => {
+    dispatch(showLoading())
+    setTimeout(() => {
+      dispatch(hideLoading())
+      dispatch(setPictures(pictures))
+    }, 2000)
+  }
+}

@@ -42,7 +42,8 @@ class SimpleSliderContainer extends React.Component {
     })
 
     //this.props.actions.showLoading()
-    this.props.actions.setPictures(pictures)
+    //this.props.actions.setPictures(pictures)
+    this.props.actions.loadPictures(pictures)
   }
 
   render() {

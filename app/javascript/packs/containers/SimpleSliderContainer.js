@@ -10,40 +10,11 @@ import SimpleSlider from '../components/SimpleSlider'
 class SimpleSliderContainer extends React.Component {
   constructor(props) {
     super(props)
-    console.log(props)
+    // console.log(props)
   }
 
   componentWillMount() {
-    const picture_names = [
-      "HU001_72A.jpg",
-      "HU002_72A.jpg",
-      "HU003_72A.jpg",
-      "HU004_72A.jpg",
-      "HU005_72A.jpg",
-      "HU006_72A.jpg",
-      "HU007_72A.jpg",
-      "HU008_72A.jpg",
-      "HU009_72A.jpg",
-      "HU010_72A.jpg",
-      "HU011_72A.jpg",
-      "HU012_72A.jpg",
-      "HU013_72A.jpg",
-      "HU014_72A.jpg",
-      "HU015_72A.jpg",
-      "HU016_72A.jpg",
-      "HU017_72A.jpg",
-      "HU018_72A.jpg",
-      "HU019_72A.jpg",
-      "HU020_72A.jpg",
-    ]
-
-    const pictures = picture_names.map((p) => {
-      return `/images/slick/${p}`
-    })
-
-    //this.props.actions.showLoading()
-    //this.props.actions.setPictures(pictures)
-    this.props.actions.loadPictures(pictures)
+    this.props.actions.loadPictures()
   }
 
   render() {

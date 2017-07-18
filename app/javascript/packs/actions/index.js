@@ -17,12 +17,22 @@ export const setPictures = (pictures) => {
   }
 }
 
-export const loadPictures = (pictures) => {
+export const loadPictures = () => {
   return (dispatch, getState) => {
     dispatch(showLoading())
-    setTimeout(() => {
+
+    fetch('/api/pictures')
+    .then(response => {
+      return response.json()
+    })
+    .then(data => {
+      // console.log(data)
       dispatch(hideLoading())
-      dispatch(setPictures(pictures))
-    }, 2000)
+      dispatch(setPictures(data))
+    })
+    .catch(err => {
+      console.error(err)
+      dispatch(hideLoading())
+    })
   }
 }

@@ -8,7 +8,9 @@ import PropTypes from 'prop-types'
 
 import { Provider } from 'react-redux'
 import { createStore, applyMiddleware } from 'redux'
+import { BrowserRouter as Router, Route, Switch } from 'react-router-dom'
 import thunk from 'redux-thunk'
+
 import rootReducers from './reducers'
 import SimpleSliderContainer from './containers/SimpleSliderContainer'
 
@@ -17,7 +19,11 @@ let store = createStore(rootReducers, applyMiddleware(thunk))
 document.addEventListener('DOMContentLoaded', () => {
   ReactDOM.render(
     <Provider store={store}>
-      <SimpleSliderContainer />
+      <Router>
+        <Switch>
+          <Route path="/page/slick" component={SimpleSliderContainer} />
+        </Switch>
+      </Router>
     </Provider>,
     document.body.appendChild(document.createElement('div')),
   )

@@ -13,6 +13,7 @@ import thunk from 'redux-thunk'
 
 import rootReducers from './reducers'
 import SimpleSliderContainer from './containers/SimpleSliderContainer'
+import LoginForm from './components/LoginForm'
 
 let store = createStore(rootReducers, applyMiddleware(thunk))
 
@@ -22,6 +23,8 @@ document.addEventListener('DOMContentLoaded', () => {
       <Router>
         <Switch>
           <Route path="/page/slick" component={SimpleSliderContainer} />
+          <Route path="/page/login" component={LoginForm} />
+          <Route exact path="/" component={LoginForm} />
         </Switch>
       </Router>
     </Provider>,

@@ -18,17 +18,21 @@ class SimpleSlider extends React.Component {
       autoplay: true,
       autoplaySpeed: 3000,
       slidesToShow: 1,
-      slidesToScroll: 1
+      slidesToScroll: 1,
+      adaptiveHeight: true,
+      centerMode: true,
     }
 
     return (
-      <Slider {...settings}>
-      {
-        this.props.pictures.map((p) => 
-                     <div key={p}><SlideImage url={p} /></div>
-                    )
-      }
-      </Slider>
+      <div className="slickContainer">
+        <Slider {...settings}>
+        {
+          this.props.pictures.map((p) =>
+                       <div key={p}><SlideImage url={p} /></div>
+                      )
+        }
+        </Slider>
+      </div>
     )
   }
 }

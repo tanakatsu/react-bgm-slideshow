@@ -14,7 +14,16 @@ class SimpleSliderContainer extends React.Component {
   }
 
   componentWillMount() {
-    this.props.actions.loadPictures()
+    if (!this.props.authed) {
+      console.log('not authenticated')
+      this.props.history.push('/page/login')
+    }
+  }
+
+  componentDidMount() {
+    if (this.props.authed) {
+      this.props.actions.loadPictures()
+    }
   }
 
   render() {
@@ -37,7 +46,8 @@ class SimpleSliderContainer extends React.Component {
 const mapStateToProps = state => {
   return {
     pictures: state.pictures,
-    loading: state.loading
+    loading: state.loading,
+    authed: state.login
   }
 }
 

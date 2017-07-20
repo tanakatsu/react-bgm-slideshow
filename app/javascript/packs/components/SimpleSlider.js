@@ -21,6 +21,7 @@ class SimpleSlider extends React.Component {
       slidesToScroll: 1,
       adaptiveHeight: true,
       centerMode: true,
+      lazyLoad: true
     }
 
     return (

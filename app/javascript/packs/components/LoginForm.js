@@ -1,6 +1,8 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 
+import { withRouter } from 'react-router-dom'
+
 class LoginForm extends React.Component {
   constructor(props) {
     super(props)
@@ -27,11 +29,11 @@ class LoginForm extends React.Component {
           Password <input type="password" ref={(input) => { this.inputPassword = input }} onChange={this.handleChange.bind(this)} />
         </div>
         <div>
-          <input type="submit" value="Login" disabled={!this.state.formValid} onClick={() => this.props.history.push('/page/slick')}/>
+          <input type="submit" value="Login" disabled={!this.state.formValid} onClick={() => { this.props.onSignIn(); this.props.history.push('/page/slick') }}/>
         </div>
       </div>
     )
   }
 }
 
-export default LoginForm
+export default withRouter(LoginForm)

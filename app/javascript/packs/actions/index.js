@@ -19,6 +19,7 @@ export const setPictures = (pictures) => {
 
 export const loadPictures = () => {
   return (dispatch, getState) => {
+    console.log('load pictures..')
     dispatch(showLoading())
 
     fetch('/api/pictures')
@@ -26,7 +27,8 @@ export const loadPictures = () => {
       return response.json()
     })
     .then(data => {
-      // console.log(data)
+      console.log('loaded')
+      console.log(data)
       dispatch(hideLoading())
       dispatch(setPictures(data))
     })
@@ -34,5 +36,17 @@ export const loadPictures = () => {
       console.error(err)
       dispatch(hideLoading())
     })
+  }
+}
+
+export const login = () => {
+  return {
+    type: 'SIGN_IN'
+  }
+}
+
+export const logout = () => {
+  return {
+    type: 'SIGN_OUT'
   }
 }

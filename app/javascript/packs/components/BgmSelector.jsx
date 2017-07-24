@@ -25,14 +25,37 @@ class BgmSelector extends React.Component {
   }
 
   onSelected() {
-    this.setState({playing: true, 
-                  message: "Now bgm playing",
-                  bgm_url: this.url
-    })
+    this.search(this.state.keyword)
   }
 
   onStopped() {
     this.setState({playing: false, message: null})
+  }
+
+  search(word) {
+    const url = "/api/youtube_search"
+    let formData = new FormData();
+    formData.append("q", word)
+
+    fetch(url, {
+      method: 'POST',
+      body: formData
+    })
+    .then(response => response.json())
+    .then(data => {
+      if (data.length > 0) {
+        console.log(data[0])
+
+        const url = `https://www.youtube.com/embed/${data[0].id}?autoplay=1`
+        const msg = `Now bgm playing (${data[0].title})`
+        this.setState({playing: true, bgm_url: url, message: msg})
+      } else {
+        this.setState({message: 'Not found'})
+      }
+    })
+    .catch(err => {
+      console.log(err)
+    })
   }
 
   render() {

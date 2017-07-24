@@ -6,6 +6,7 @@ import { connect } from 'react-redux'
 
 import * as actions from '../actions'
 import SimpleSlider from '../components/SimpleSlider'
+import BgmSelector from '../components/BgmSelector'
 
 class SimpleSliderContainer extends React.Component {
   constructor(props) {
@@ -37,6 +38,7 @@ class SimpleSliderContainer extends React.Component {
         <div>
           {this.props.loading ? <span>Loading...</span> : null}
         </div>
+        <BgmSelector />
         {slider}
       </div>
     )

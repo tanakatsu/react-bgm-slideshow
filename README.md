@@ -1,24 +1,33 @@
-# README
+# React slideshow sample with BGM
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+This is a react slideshow sample application with BGM selector.
 
-Things you may want to cover:
+- Search bgm in YouTube and play it.
 
-* Ruby version
+	
 
-* System dependencies
 
-* Configuration
+### How to use
 
-* Database creation
+1. Git clone this repository
+1. Place your favourite pictures into `public/images/slick/`
+1. Install dependencies
 
-* Database initialization
+	```
+	$ bundle install
+	$ bin/yarn install
+	```
+	
+1. Build 
 
-* How to run the test suite
+	```
+	$ bin/webpack
+	```
+	
+1.  Start server
 
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+	```
+	$ rails s
+	```
+1. Navigate your browser to `localhost:3000/`
+1. Put song name into textbox and click Select button. Then, the application will start to play the matched BGM.

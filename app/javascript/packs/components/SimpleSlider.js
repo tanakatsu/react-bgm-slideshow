@@ -8,6 +8,22 @@ class SimpleSlider extends React.Component {
   constructor(props) {
     super(props)
     //console.log(props)
+
+    this.state = { width: 0, height: 0 }
+    this.updateWindowDimensions = this.updateWindowDimensions.bind(this)
+  }
+
+  componentDidMount() {
+    this.updateWindowDimensions();
+    window.addEventListener('resize', this.updateWindowDimensions);
+  }
+
+  componentWillUnmount() {
+    window.removeEventListener('resize', this.updateWindowDimensions);
+  }
+
+  updateWindowDimensions() {
+    this.setState({ width: window.innerWidth, height: window.innerHeight });
   }
 
   render() {
@@ -19,7 +35,6 @@ class SimpleSlider extends React.Component {
       autoplaySpeed: 2000,
       slidesToShow: 1,
       slidesToScroll: 1,
-      adaptiveHeight: true,
       centerMode: true,
       lazyLoad: true
     }
@@ -29,7 +44,7 @@ class SimpleSlider extends React.Component {
         <Slider {...settings}>
         {
           this.props.pictures.map((p) =>
-                       <div key={p}><SlideImage url={p} /></div>
+                       <div key={p}><SlideImage url={p} height={this.state.height * 0.7} /></div>
                       )
         }
         </Slider>

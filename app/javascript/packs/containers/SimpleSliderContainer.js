@@ -15,16 +15,16 @@ class SimpleSliderContainer extends React.Component {
   }
 
   componentWillMount() {
-    if (!this.props.authed) {
-      console.log('not authenticated')
-      this.props.history.push('/page/login')
-    }
+    // if (!this.props.authed) {
+    //   console.log('not authenticated')
+    //   this.props.history.push('/page/login')
+    // }
   }
 
   componentDidMount() {
-    if (this.props.authed) {
+    // if (this.props.authed) {
       this.props.actions.loadPictures()
-    }
+    // }
   }
 
   render() {

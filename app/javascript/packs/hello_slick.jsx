@@ -24,7 +24,7 @@ document.addEventListener('DOMContentLoaded', () => {
         <Switch>
           <Route path="/page/slick" component={SimpleSliderContainer} />
           <Route path="/page/login" component={LoginPage} />
-          <Route exact path="/" component={LoginPage} />
+          <Route exact path="/" component={SimpleSliderContainer} />
         </Switch>
       </Router>
     </Provider>,

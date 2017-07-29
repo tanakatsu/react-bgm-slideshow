@@ -6,4 +6,10 @@
   margin: 0 auto;
   /* background: #419be0; */
   width: 80%;
+  padding: 4px;
+
+  div.slick-initialized div.slick-slide {
+    display: flex;
+    justify-content: center;
+  }
 }

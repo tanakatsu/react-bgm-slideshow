@@ -12,4 +12,8 @@
     display: flex;
     justify-content: center;
   }
+
+  .slick-next:before, .slick-prev:before {
+    color: gray;
+  }
 }

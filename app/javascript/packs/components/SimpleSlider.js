@@ -32,7 +32,7 @@ class SimpleSlider extends React.Component {
       speed: 1500,
       autoplay: true,
       autoplaySpeed: 5000,
-      lazyLoad: true
+      lazyLoad: false
     }
 
     return (

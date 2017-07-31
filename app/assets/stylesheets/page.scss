@@ -2,6 +2,11 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
+* {
+  min-height: 0;
+  min-width: 0;
+}
+
 .slickContainer {
   margin: 0 auto;
   /* background: #419be0; */

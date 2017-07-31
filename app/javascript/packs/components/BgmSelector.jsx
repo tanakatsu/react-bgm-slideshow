@@ -6,7 +6,6 @@ import BgmPlayer from './BgmPlayer'
 class BgmSelector extends React.Component {
   constructor(props) {
     super(props)
-    this.url = "https://www.youtube.com/embed/B2fPYlGKdXM?autoplay=1"
 
     this.state = {
       keyword: 'AI - Story',

@@ -5,6 +5,8 @@ class Api::YoutubeSearchesController < ApplicationController
 
   def create
     q = params[:q]
+    render json: [] and return if q.blank?
+
     url = "https://www.youtube.com/results?search_query=#{URI.escape(q)}"
     #url = "https://www.youtube.com/results?search_query=%E6%B3%A2%E4%B9%97%E3%82%8A%E3%82%B8%E3%83%A7%E3%83%8B%E3%83%BC"
 

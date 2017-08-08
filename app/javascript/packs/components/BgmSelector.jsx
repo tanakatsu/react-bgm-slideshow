@@ -45,9 +45,9 @@ class BgmSelector extends React.Component {
       if (data.length > 0) {
         console.log(data[0])
 
-        const url = `https://www.youtube.com/embed/${data[0].id}?autoplay=1`
+        const video_id = data[0].id
         const msg = `Now bgm playing (${data[0].title})`
-        this.setState({playing: true, bgm_url: url, message: msg})
+        this.setState({playing: true, bgm_id: video_id, message: msg})
       } else {
         this.setState({message: 'Not found'})
       }
@@ -73,7 +73,7 @@ class BgmSelector extends React.Component {
             <input type="button" value="Stop" onClick={this.onStopped} />
         }
         { this.state.playing &&
-            <BgmPlayer src={this.state.bgm_url} />
+            <BgmPlayer video_id={this.state.bgm_id} />
         }
       </div>
     )

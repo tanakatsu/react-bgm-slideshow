@@ -1,5 +1,6 @@
 import React from 'react'
 import PropTypes from 'prop-types'
+import YouTube from 'react-youtube'
 
 class BgmPlayer extends React.Component {
   constructor(props) {
@@ -7,8 +8,18 @@ class BgmPlayer extends React.Component {
   }
 
   render() {
+    const opts = {
+      playerVars: {
+        autoplay: 1
+      }
+    }
     return (
-      <iframe src={this.props.src} style={{position: "absolute", top: "-9999px", left: "-9999px"}}></iframe>
+      <div style={{position: "absolute", top: "-9999px", left: "-9999px"}}>
+        <YouTube
+          videoId={this.props.video_id}
+          opts={opts}
+        />
+      </div>
     )
   }
 }

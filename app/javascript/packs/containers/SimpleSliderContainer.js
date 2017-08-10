@@ -7,11 +7,12 @@ import { connect } from 'react-redux'
 import * as actions from '../actions'
 import SimpleSlider from '../components/SimpleSlider'
 import BgmSelector from '../components/BgmSelector'
+import queryString from 'query-string'
 
 class SimpleSliderContainer extends React.Component {
   constructor(props) {
     super(props)
-    // console.log(props)
+    console.log(props)
   }
 
   componentWillMount() {
@@ -22,8 +23,15 @@ class SimpleSliderContainer extends React.Component {
   }
 
   componentDidMount() {
+    const params = queryString.parse(this.props.location.search)
+    console.log(params)
+
     // if (this.props.authed) {
-      this.props.actions.loadPictures()
+      if (params.json) {
+        this.props.actions.loadJson(params.json)
+      } else {
+        this.props.actions.loadPictures()
+      }
     // }
   }
 

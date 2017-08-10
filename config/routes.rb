@@ -6,6 +6,7 @@ Rails.application.routes.draw do
   namespace :api do
     resources :pictures, only: [:index]
     resource :youtube_search, only: [:create]
+    resource :json_download, only: [:create]
   end
 
   root to: 'page#slick'

@@ -39,6 +39,34 @@ export const loadPictures = () => {
   }
 }
 
+export const loadJson = (url) => {
+  return (dispatch, getState) => {
+    console.log('load json..')
+    dispatch(showLoading())
+
+    let formData = new FormData();
+    formData.append("url", url)
+
+    fetch("/api/json_download", {
+      method: 'POST',
+      body: formData
+    })
+    .then(response => {
+      return response.json()
+    })
+    .then(data => {
+      console.log('loaded')
+      console.log(data)
+      dispatch(hideLoading())
+      dispatch(setPictures(data))
+    })
+    .catch(err => {
+      console.error(err)
+      dispatch(hideLoading())
+    })
+  }
+}
+
 export const login = () => {
   return {
     type: 'SIGN_IN'

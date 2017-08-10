@@ -9,14 +9,18 @@ class BgmSelector extends React.Component {
 
     this.state = {
       keyword: 'AI - Story',
+      loaded: false,
       playing: false,
+      video_title: null,
+      video_id: null,
       message: null,
-      bgm_url: null
     }
 
     this.onTextChanged = this.onTextChanged.bind(this)
     this.onSelected = this.onSelected.bind(this)
     this.onStopped = this.onStopped.bind(this)
+    this.onLoaded = this.onLoaded.bind(this)
+    this.onStarted = this.onStarted.bind(this)
   }
 
   onTextChanged(e) {
@@ -28,7 +32,17 @@ class BgmSelector extends React.Component {
   }
 
   onStopped() {
-    this.setState({playing: false, message: null})
+    this.setState({playing: false, loaded: false, message: null})
+  }
+
+  onLoaded() {
+    const msg = `Ready for play (${this.state.video_title})`
+    this.setState({loaded: true, message: msg})
+  }
+
+  onStarted() {
+    const msg = `Now playing (${this.state.video_title})`
+    this.setState({playing: true, message: msg})
   }
 
   search(word) {
@@ -45,9 +59,8 @@ class BgmSelector extends React.Component {
       if (data.length > 0) {
         console.log(data[0])
 
-        const video_id = data[0].id
-        const msg = `Now bgm playing (${data[0].title})`
-        this.setState({playing: true, bgm_id: video_id, message: msg})
+        this.setState({video_id: data[0].id, video_title: data[0].title})
+        this.onLoaded()
       } else {
         this.setState({message: 'Not found'})
       }
@@ -60,8 +73,8 @@ class BgmSelector extends React.Component {
   render() {
     let selectorBox = null
 
-    if (!this.state.playing) {
-      selectorBox = <div><input type="text" size="30" value={this.state.keyword} onChange={this.onTextChanged} disabled={this.state.playing} />
+    if (!this.state.loading && !this.state.playing) {
+      selectorBox = <div><input type="text" size="30" value={this.state.keyword} onChange={this.onTextChanged} />
         <input type="button" value="Select" onClick={this.onSelected} /></div>
     }
 
@@ -69,11 +82,11 @@ class BgmSelector extends React.Component {
       <div>
         { selectorBox }
         <span> {this.state.message} </span>
-        { this.state.playing &&
-            <input type="button" value="Stop" onClick={this.onStopped} />
+        { this.state.loaded &&
+            <BgmPlayer video_id={this.state.video_id} visible={!this.state.playing} onStarted={this.onStarted} />
         }
         { this.state.playing &&
-            <BgmPlayer video_id={this.state.bgm_id} />
+            <input type="button" value="Stop" onClick={this.onStopped} />
         }
       </div>
     )

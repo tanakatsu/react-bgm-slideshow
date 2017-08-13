@@ -27,9 +27,9 @@ class BgmPlayer extends React.Component {
       width: '40',
       height: '30',
       playerVars: {
-        showinfo: 1,
-        controls: 1,
-        modestbranding: 1,
+        showinfo: 0,
+        controls: 2,
+        modestbranding: 0,
         playsinline: 1,
       },
     }

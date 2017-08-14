@@ -24,8 +24,8 @@ class BgmPlayer extends React.Component {
 
   render() {
     const opts = {
-      width: '40',
-      height: '30',
+      width: '40', // same size of play button
+      height: '30', // same size of play button
       playerVars: {
         showinfo: 0,
         controls: 2,

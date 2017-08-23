@@ -18,7 +18,7 @@ class Api::YoutubeSearchesController < ApplicationController
 
       contents = doc.css("ol.item-section li")
       results = contents.map do |content|
-        if content.css("div.yt-lockup") && content.css("div.yt-lockup").length > 0 && content.css("div.yt-lockup")[0].attribute('data-context-item-id')
+        if content.css("div.yt-lockup") && content.css("div.yt-lockup").length > 0 && content.css("div.yt-lockup")[0].attribute('data-context-item-id')  && content.css("div.yt-lockup")[0].attribute('data-ad-impressions').nil?
           id = content.css("div.yt-lockup")[0].attribute("data-context-item-id").value
           title = content.css("div.yt-lockup-content h3 a")[0].attribute("title").value
           {id: id, title: title}
@@ -26,6 +26,7 @@ class Api::YoutubeSearchesController < ApplicationController
       end
       results = results.compact
     end
+    Rails.logger.info(results)
 
     render json: results
   end
